@@ -3,6 +3,13 @@ import os
 from urllib.request import Request, urlopen
 
 
+def creer_url(nomManga, chapitre):
+    chapitre = str(chapitre)
+    return "https://www.mangapanda.com/" + nomManga + "/" + chapitre
+
+
+
+
 def syntax_chapitre_valide(chapitres):
     for chapitre in chapitres:
         if chapitre.isnumeric() == False:
