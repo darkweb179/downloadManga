@@ -103,9 +103,9 @@ chapterList = creer_liste_chapitre(chapter)
 for chap in chapterList:
     print(manga_name.upper())
     url = creer_url(manga_name, chap)
-    urlContent = read_url(url)
+    urlContent = lecture_lien(url)
 
-    if is_exist_chapter(urlContent):
+    if check_chapitre_exist(urlContent):
         pageNum = get_nbof_page_manga(urlContent)
         print("Chapter - {}".format(chap))
         chapterFolder = 'chapitre'+chap
