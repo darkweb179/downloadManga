@@ -98,11 +98,11 @@ except IndexError :
     sys.exit()
        
 mainFolder = False
-chapterList = create_chapter_list(chapter)
+chapterList = creer_liste_chapitre(chapter)
 
 for chap in chapterList:
     print(manga_name.upper())
-    url = create_url(manga_name, chap)
+    url = creer_url(manga_name, chap)
     urlContent = read_url(url)
 
     if is_exist_chapter(urlContent):
@@ -135,4 +135,4 @@ for chap in chapterList:
             print(fileName)
             download_page_manga(urlimage, fileName)
     else:
-        print("Chapter {} does not exist".format(chap))
+        print("Chapter {} does not exist".format(chap)) 
