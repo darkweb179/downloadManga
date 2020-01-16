@@ -2,6 +2,19 @@ import sys
 import os
 from urllib.request import Request, urlopen
 
+def telecharger_image_manga(url, fichier):
+    a = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    b = urlopen(a)
+    c = open(fichier, 'wb')
+    block_sz = 8192
+    while True:
+        buffer = b.read(block_sz)
+        if not buffer:
+            break
+        c.write(buffer)
+
+    c.close()
+
 
 def recuperer_lien_image(html):
     begin = html.index('src="https://i')
