@@ -106,7 +106,7 @@ for chap in chapterList:
     urlContent = lecture_lien(url)
 
     if check_chapitre_exist(urlContent):
-        pageNum = get_nbof_page_manga(urlContent)
+        pageNum = retoure_nombre_episode(urlContent)
         print("Chapter - {}".format(chap))
         chapterFolder = 'chapitre'+chap
         if mainFolder == False:
@@ -122,17 +122,17 @@ for chap in chapterList:
         except FileExistsError:
             pass
 
-        urlimage = get_info_of_page_manga(urlContent)
+        urlimage = recuperer_lien_image(urlContent)
         fileName = "./"+manga_name+"/"+chapterFolder+"/" + manga_name + "-" + chap + '-1.jpg'
         print(fileName)
-        download_page_manga(urlimage, fileName)
+        telecharger_image_manga(urlimage, fileName)
         
         for k in range(2, pageNum + 1):
             urlname = url + "/" + str(k)
-            urlContent = read_url(urlname)
-            urlimage = get_info_of_page_manga(urlContent)
+            urlContent = lecture_lien(urlname)
+            urlimage = recuperer_lien_image(urlContent)
             fileName = "./"+manga_name+"/"+chapterFolder+"/"+ manga_name + "-" + chap + "-" + str(k) + ".jpg"
             print(fileName)
-            download_page_manga(urlimage, fileName)
+            telecharger_image_manga(urlimage, fileName)
     else:
         print("Chapter {} does not exist".format(chap)) 
