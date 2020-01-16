@@ -3,6 +3,13 @@ import os
 from urllib.request import Request, urlopen
 
 
+def syntax_chapitre_valide(chapitres):
+    for chapitre in chapitres:
+        if chapitre.isnumeric() == False:
+            return False
+    return True
+
+
 
 def creer_liste_chapitre(chapitre_param):
 
