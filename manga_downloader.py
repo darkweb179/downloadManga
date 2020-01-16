@@ -69,7 +69,7 @@ def creer_liste_chapitre(chapitre_param):
             print("Use a valid syntax for chapter list")
             sys.exit()
     else:
-        if is_valid_chapter_syntax(chapitre_param):
+        if syntax_chapitre_valide(chapitre_param):
             return [chapitre_param]
         else:
             print("Use a valid syntax for chapter list")
