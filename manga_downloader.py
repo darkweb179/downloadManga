@@ -3,6 +3,12 @@ import os
 from urllib.request import Request, urlopen
 
 
+def retoure_nombre_episode(html):
+    begin = html.index('</select> of ')
+    end = html.index('</div>', begin+13)
+    return int(html[begin+13 : end])
+
+
 def creer_url(nomManga, chapitre):
     chapitre = str(chapitre)
     return "https://www.mangapanda.com/" + nomManga + "/" + chapitre
