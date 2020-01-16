@@ -2,6 +2,34 @@ import sys
 import os
 from urllib.request import Request, urlopen
 
+def telecharger_image_manga(url, fichier):
+    a = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    b = urlopen(a)
+    c = open(fichier, 'wb')
+    block_sz = 8192
+    while True:
+        buffer = b.read(block_sz)
+        if not buffer:
+            break
+        c.write(buffer)
+
+    c.close()
+
+
+def recuperer_lien_image(html):
+    begin = html.index('src="https://i')
+    end = html.index('.jpg"', begin+14)
+    link = html[begin+5:end+4]
+    # fname = link.split('/')[-1]
+    # ret = {'link':link, 'fname':fname}
+    # return ret
+    return link
+
+
+def lecture_lien(url):
+    req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    reqopen = urlopen(req)
+    return str(reqopen.read())
 
 def retoure_nombre_episode(html):
     begin = html.index('</select> of ')
